@@ -1,0 +1,9 @@
+### Default
+boarder: 10
+width: 640
+height: 480
+
+ncc_window_size: 2 # NCC half width
+min_cov: 0.1
+max_cov: 10
+trialname: "./"

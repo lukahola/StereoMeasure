@@ -32,8 +32,8 @@ def pixel2Cam(p, K):
 
 
 def triangulation(relativePose, mtxL, mtxR, match_kp_1, match_kp_2):
-	T1 = np.hstack((np.eye(3), np.zeros((3, 1))))
-	T2 = relativePose
+	P1 = np.hstack((np.eye(3), np.zeros((3, 1))))
+	P2 = relativePose
 
 	pts_1 = []
 	pts_2 = []
@@ -44,7 +44,7 @@ def triangulation(relativePose, mtxL, mtxR, match_kp_1, match_kp_2):
 	pts_1 = np.array(pts_1).T
 	pts_2 = np.array(pts_2).T
 
-	pts_4d = cv2.triangulatePoints(T1, T2, pts_1, pts_2)
+	pts_4d = cv2.triangulatePoints(P1, P2, pts_1, pts_2)
 	pts_4d = np.transpose(pts_4d)
 	r, c = pts_4d.shape
 	pts_3d = []
@@ -342,11 +342,10 @@ def measure():
 					cv2.circle(frame, click_point1, 3, (0, 0, 255), -1)
 					(x, y) = click_point1
 					if not pt_curr_1.any():
-
 						pt_curr_1, px_min_curr, px_max_curr = epi_polar_search(
 							img1, img2, pose_tcr, [x, y], 500, 500)
+						
 					if pt_curr_1.any():
-
 						cv2.circle(frame, (int(pt_curr_1[0])+640, int(pt_curr_1[1])), 3, (0, 255, 0), -1)
 
 				if click_point1 and click_point2:
@@ -355,7 +354,6 @@ def measure():
 					cv2.line(frame, click_point1, click_point2, (0, 0, 255), 2)
 					(x, y) = click_point2
 					if not pt_curr_2.any():
-
 						pt_curr_2, _, _ = epi_polar_search(
 							img1, img2, pose_tcr, [x, y], 500, 500)
 
