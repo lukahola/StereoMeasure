@@ -390,7 +390,6 @@ def measure():
 
 
 				if click_point1 and click_point2 and click_point3 and click_point4:
-
 					min_point1 = [click_point1, click_point2]
 					min_point2 = [(click_point3[0]-640, click_point3[1]),
 								  (click_point4[0]-640, click_point4[1])]
@@ -412,8 +411,8 @@ def measure():
 				if 10 <= mouse_pos[0] <= x_lim - 10 and 10 <= mouse_pos[1] <= y_lim - 10:
 					blank_frame = clipped(frame, mouse_pos)
 
-			cv2.moveWindow('frame', 250, 250)
-			cv2.moveWindow('floating window', 250, y_lim+280)
+			cv2.moveWindow('frame', 0, 0)
+			cv2.moveWindow('floating window', 0, y_lim+0)
 			cv2.imshow('frame', frame)
 			cv2.imshow('floating window', blank_frame)
 
@@ -447,10 +446,10 @@ def main():
 
 	cv2.namedWindow('detection')
 
-	cv2.moveWindow('detection', 250, 250)
+	cv2.moveWindow('detection', 0, 0)
 
 	cap1 = cv2.VideoCapture(0)
-	cap2 = cv2.VideoCapture(1)
+	cap2 = cv2.VideoCapture(2)
 
 	try:
 		while True:
@@ -461,7 +460,7 @@ def main():
 			if ret1 and ret2:
 
 				img = np.hstack((imgL_Origin, imgR_Origin))
-				cv2.moveWindow('detection', 250, 250)
+				cv2.moveWindow('detection', 0, 0)
 				cv2.imshow('detection', img)
 
 				key = cv2.waitKey(1)
@@ -499,7 +498,7 @@ if __name__ == "__main__":
 		print('file is existing!')
 
 	#############################################
-	mtxL = loadCameraCalibration(trialname+'camMatrix/cameraMatrixL.txt')
+	mtxL = loadCameraCalibration(trialname+'camMatrix/cameraMatrixL.txt') # intrinsic
 	distL = loadCameraCalibration(trialname+'camMatrix/distortionL.txt')
 	mtxR = loadCameraCalibration(trialname+'camMatrix/cameraMatrixR.txt')
 	distR = loadCameraCalibration(trialname+'camMatrix/distortionR.txt')
