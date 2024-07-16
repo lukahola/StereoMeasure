@@ -275,7 +275,7 @@ def measure():
 	print(ctime())
 	# **************load camera parameters****************
 
-	pose_tcr = loadCameraCalibration(trialname+'camMatrix/relativePose.txt')
+	pose_tcr = loadCameraCalibration(trialname+'200-camMatrix/relativePose.txt')
 
 	# ******************************
 
@@ -498,10 +498,10 @@ if __name__ == "__main__":
 		print('file is existing!')
 
 	#############################################
-	mtxL = loadCameraCalibration(trialname+'camMatrix/cameraMatrixL.txt') # intrinsic
-	distL = loadCameraCalibration(trialname+'camMatrix/distortionL.txt')
-	mtxR = loadCameraCalibration(trialname+'camMatrix/cameraMatrixR.txt')
-	distR = loadCameraCalibration(trialname+'camMatrix/distortionR.txt')
+	mtxL = loadCameraCalibration(trialname+'200-camMatrix/cameraMatrixL.txt') # intrinsic
+	distL = loadCameraCalibration(trialname+'200-camMatrix/distortionL.txt')
+	mtxR = loadCameraCalibration(trialname+'200-camMatrix/cameraMatrixR.txt')
+	distR = loadCameraCalibration(trialname+'200-camMatrix/distortionR.txt')
 
 	mouse_pos = ()
 
